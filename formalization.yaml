@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: Affine Hulls and NP Query Compression
+  description: >-
+    In a finite binary register-machine model, if every polynomial-time word
+    function computed using one nonadaptive batch of NP queries is computable
+    using logarithmically many adaptive NP queries, then P equals NP. The two
+    oracle function classes therefore coincide exactly when P equals NP.
+    The checked algorithm recovers the affine hull of verifier witnesses by
+    a parallel query batch, enumerates the candidates from hypothetical
+    adaptive answer tapes, and uses either a tested witness or a parity cut
+    to decide the instance in polynomial time.
+  authors: [Ludwig Leitmeir]
+  responsible_maintainers: [Ludwig Leitmeir]
+  license: MIT
+
+classification:
+  arxiv: [cs.CC]
+  msc2020: ["68Q15"]
+
+sources:
+  - title: Exploratory ChatGPT discussion on affine hulls and NP query compression
+    type: other
+    relationship: adapts
+    note: >-
+      The supplied discussion proposes an affine-hull list-to-search argument.
+      The Lean development uses an exact finite register-machine model,
+      fixed NP verifiers, and a checked implementation with explicit time
+      bounds. The accompanying research note records the proof and prior art.
+  - title: A Note on P-selective sets and on Adaptive versus Nonadaptive Queries to NP
+    type: paper
+    authors: [Ashish V. Naik, Alan L. Selman]
+    location: https://cse.buffalo.edu/documents/selman/note.pdf
+    relationship: background
+    note: Hypothesis B and its P versus NP question are on the second PDF page.
+  - title: Six Hypotheses in Search of a Theorem
+    type: paper
+    authors: [Harry Buhrman, Lance Fortnow, Leen Torenvliet]
+    id: "10.1109/CCC.1997.612295"
+    location: https://ir.cwi.nl/pub/1902
+    relationship: background
+    note: Lemma 2.9 enumerates adaptive transcripts. Section 5 treats the class equality.
+  - title: Sparse Sets, Approximable Sets, and Parallel Queries to NP
+    type: paper
+    authors: [Vikraman Arvind, Jacobo Torán]
+    id: ECCC TR98-027
+    location: https://eccc.weizmann.ac.il/report/1998/027/
+    relationship: background
+    note: Connects the equality to sparse reductions and logarithmic approximability.
+
+related_formalizations: []
+
+status:
+  scope: >-
+    Both compared theorems are proved for total word functions and languages
+    in the model defined in Challenge.lean. The register-to-tape and
+    tape-to-register simulations are argued in the README outside Lean.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: [propext, Classical.choice, Quot.sound]
+
+automation:
+  methods:
+    - method: other
+      framework: ChatGPT
+      tool_setup: Exploratory mathematical argument in the unpublished discussion.
+    - method: agent
+      models: [GPT-6.2 Sol]
+      framework: Codex
+      tool_setup: >-
+        Implemented the Lean proof with delegated component proofs, iterated
+        against the Lean kernel, and ran a separate Python cross-check over
+        finite solution sets and search trials.
+  notes: >-
+    Ludwig Leitmeir supplied the exploratory discussion and directed the
+    verification and packaging. The argument and formal development made
+    substantive use of AI. Publication priority remains unverified.
+
+fidelity:
+  divergences: >-
+    Lean proves the result for the explicit register-machine model. The
+    research note illustrates the oracle using Boolean circuits and padded
+    reduced row echelon bases. The checked machine works on fixed NP
+    verifiers and uses the canonical linear normal form with the same kernel
+    as the lifted row span.
+
+review:
+  status: self-assessed
+  notes: >-
+    A clean local Comparator run on Lean 4.35.0 matched both Challenge
+    statements to the Solution. Lean and NanoDa independently accepted
+    the exported proofs. Finite Python tests cross-check the algorithm.
+    Independent expert assessment remains open.
+
+alignment:
+  namespace: ComplexityImplication
+  statements:
+    - source: Naik and Selman's Hypothesis B question
+      lean: ComplexityImplication.pEqualsNP_of_parallel_le_log
+      module: ComplexityImplication
+      status: proved
+      note: The theorem states the implication in the finite register-machine model.
+    - source: Function-class equality and P versus NP
+      lean: ComplexityImplication.classEquality_iff_pEqualsNP
+      module: ComplexityImplication
+      status: proved
+      note: The theorem combines the forward implication with oracle substitution when P equals NP.

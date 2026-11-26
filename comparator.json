@@ -1,0 +1,10 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "ComplexityImplication.pEqualsNP_of_parallel_le_log",
+    "ComplexityImplication.classEquality_iff_pEqualsNP"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

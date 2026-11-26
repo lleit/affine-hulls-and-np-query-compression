@@ -1,0 +1,76 @@
+name = "AffineHullVerification"
+version = "0.1.0"
+defaultTargets = ["AffineHullVerification"]
+
+[[lean_lib]]
+name = "AffineHullVerification"
+# Retain the original proofs' visibility and unfolding behavior under Lean's module system.
+moreLeanArgs = [
+  "-Dbackward.privateInPublic=true",
+  "-Dbackward.privateInPublic.warn=false",
+  "-Dbackward.isDefEq.respectTransparency=false",
+]
+roots = [
+  "AffineHullVerification",
+  "AffinePruning",
+  "OracleTranscripts",
+  "AffineSearch",
+  "AffineBasis",
+  "Splitter",
+  "SplitterTests",
+  "SearchSplitter",
+  "HullRecovery",
+  "HullDecoder",
+  "CandidateReadCode",
+  "LinearPointCode",
+  "CandidateProbeCode",
+  "CandidateRankCode",
+  "SplitWeightCode",
+  "SplitBranchCode",
+  "GreedySplitterCode",
+  "CandidateCutoffCode",
+  "CandidateClassifyCode",
+  "RoundSemantics",
+  "SearchRoundIO",
+  "SearchRoundProgram",
+  "QueryEncoding",
+  "HullQueryLanguage",
+  "HullBatchMachine",
+  "HullBatchPrograms",
+  "HullBatchProducer",
+  "ComplexityModel",
+  "ComplexityModel.FieldCode",
+  "ComplexityModel.WordCode",
+  "ComplexityModel.PairCode",
+  "ComplexityModel.ParityCode",
+  "ComplexityModel.RestrictionCode",
+  "ComplexityModel.HistoryCode",
+  "ComplexityModel.BatchCode",
+  "ComplexityModelClasses",
+  "ComplexityModelSimulation",
+  "ComplexityModelTranscripts",
+  "MachineEnumeration",
+  "FixedVerifier",
+  "RestrictedVerifier",
+  "WidthCode",
+  "CertificateCode",
+  "EliminationCode",
+  "EliminationQueryCode",
+  "HullVerifierCode",
+  "ComplexityModel.ReplayFrameCode",
+  "ReplayListCode",
+  "ReplayParameters",
+  "CandidatePipeline",
+  "QueryHeaderCode",
+  "WitnessSearch",
+  "SearchLoopCode",
+  "UnaryPolynomialCode",
+  "SearchInitCode",
+  "ComplexityImplication",
+]
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"
