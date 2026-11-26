@@ -2,16 +2,17 @@
 version: "v0.4"
 
 project:
-  name: Affine Hulls and NP Query Compression
+  name: Functional NP Query Compression Is Equivalent to P = NP
   description: >-
-    In a finite binary register-machine model, if every polynomial-time word
-    function computed using one nonadaptive batch of NP queries is computable
-    using logarithmically many adaptive NP queries, then P equals NP. The two
-    oracle function classes therefore coincide exactly when P equals NP.
-    The checked algorithm recovers the affine hull of verifier witnesses by
-    a parallel query batch, enumerates the candidates from hypothetical
-    adaptive answer tapes, and uses either a tested witness or a parity cut
-    to decide the instance in polynomial time.
+    Naik and Selman's Hypothesis B states that every polynomial-time function
+    on binary strings computable with one nonadaptive batch of NP queries can
+    also be computed with logarithmically many adaptive NP queries. We prove
+    that this inclusion implies P = NP, answering their question about its
+    consequence. Conversely, P = NP implies that the two function classes
+    coincide. The proof uses affine hulls of verifier witnesses over the binary
+    field to turn a polynomial-size list of candidate hulls into a deterministic
+    witness search. Lean verifies both directions for total functions in an
+    explicit binary register-machine model.
   authors: [Ludwig Leitmeir]
   responsible_maintainers: [Ludwig Leitmeir]
   license: MIT

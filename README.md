@@ -1,10 +1,25 @@
-# Affine Hull Verification
+# Functional NP Query Compression Is Equivalent to P = NP
 
-Lean checks that the polynomial-time functions computed using one parallel
-batch of NP queries equal those computed using logarithmically many adaptive
-NP queries exactly when P = NP. The entry point is
-`ComplexityImplication.classEquality_iff_pEqualsNP`. The forward implication
-requires only inclusion of the parallel class in the adaptive class.
+For total functions on binary strings, we prove
+
+$$
+\mathrm{FP}_{\parallel}^{\mathrm{NP}} = \mathrm{FP}^{\mathrm{NP}[O(\log n)]}
+\quad\Longleftrightarrow\quad
+\mathrm{P} = \mathrm{NP}.
+$$
+
+Naik and Selman asked whether their Hypothesis B implies P = NP. The forward
+direction answers yes. If every polynomial-time function computable with one
+nonadaptive batch of NP queries can also be computed with logarithmically
+many adaptive NP queries, then P = NP. This direction requires only inclusion
+of the batch class in the adaptive class. [Naik and Selman, p. 2](https://cse.buffalo.edu/documents/selman/note.pdf#page=2)
+
+The proof uses affine hulls of verifier witnesses over the binary field.
+Given a polynomial-size list of candidate hulls that includes the true hull
+whenever a witness exists, the search can make progress without identifying
+which candidate is correct. Lean verifies both directions in an explicit
+binary register-machine model. The main theorem is
+`ComplexityImplication.classEquality_iff_pEqualsNP`.
 
 ## Build
 
