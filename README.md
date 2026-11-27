@@ -1,5 +1,7 @@
 # Functional NP Query Compression Is Equivalent to P = NP
 
+[Read the four-page preprint on Zenodo.](https://doi.org/10.5281/zenodo.24570685)
+
 For total functions on binary strings, we prove
 
 $$
